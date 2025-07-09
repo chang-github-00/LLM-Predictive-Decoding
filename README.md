@@ -68,6 +68,8 @@ First launch [Math-Shepherd](https://arxiv.org/pdf/2312.08935) reward model:
 ```
 vllm serve peiyi9979/math-shepherd-mistral-7b-prm
 ```
+Set `OPENAI_API_BASE = "http://localhost:8000/v1"` in `.env` file. 
+
 Run reward-guided predictive decoding: 
 ```
 python agentboard/eval_reasoning_reward_parallel.py
