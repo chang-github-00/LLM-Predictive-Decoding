@@ -55,6 +55,7 @@ huggingface-cli download openai/gsm8k --repo-type dataset --local-dir gsm8k
 ```
 
 ## Run Predictive Decoding
+Requires one 80G GPU to run 8B LLM.
 ```
 CUDA_VISIBLE_DEVICES=0 python agentboard/eval_reasoning_parallel.py
   --cfg-path eval_configs/gsm8k/mpc_sample_gsm8k_llama3.yaml
@@ -65,6 +66,8 @@ CUDA_VISIBLE_DEVICES=0 python agentboard/eval_reasoning_parallel.py
 ```
 More scripts on running Predictive Decoding on other tasks, and scripts for baselines on available [here](/scripts/run.sh).
 ## Run Reward-guided Predictive Decoding
+Requires two 80G GPU to run 8B LLM and 7B reward model.
+
 First launch [Math-Shepherd](https://arxiv.org/pdf/2312.08935) reward model: 
 ```
 vllm serve peiyi9979/math-shepherd-mistral-7b-prm
