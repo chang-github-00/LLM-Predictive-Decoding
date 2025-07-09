@@ -63,6 +63,7 @@ CUDA_VISIBLE_DEVICES=0 python agentboard/eval_reasoning_parallel.py
   --data_path $PROJECT_DIR/data/gsm8k
   --batch_size 500
 ```
+More scripts on running Predictive Decoding on other tasks, and scripts for baselines on available [here](/scripts/run.sh).
 ## Run Reward-guided Predictive Decoding
 First launch [Math-Shepherd](https://arxiv.org/pdf/2312.08935) reward model: 
 ```
@@ -83,5 +84,15 @@ python agentboard/eval_reasoning_reward_parallel.py
 ## Change Parameters for Analyzing Test-time Scaling Law
 See commands in `scripts/run_scaling_law.sh`.
 
+## Citation
+If you find this repository useful, please consider giving star and citing our paper:
+```
+@article{ma2024non,
+  title={Non-myopic Generation of Language Models for Reasoning and Planning},
+  author={Ma, Chang and Zhao, Haiteng and Zhang, Junlei and He, Junxian and Kong, Lingpeng},
+  journal={arXiv preprint arXiv:2410.17195},
+  year={2024}
+}
+```
 
 
