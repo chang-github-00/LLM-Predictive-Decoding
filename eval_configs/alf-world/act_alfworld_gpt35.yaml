@@ -1,0 +1,72 @@
+run:
+  max_num_steps: 20
+  wandb: True
+  project_name: eval-test
+  baseline_dir: data/baseline_results
+  log_path: ${PROJECT_PATH}/results/test
+# only provide example run_config here, please specify with arguments when running
+# --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
+
+agent:
+  name: VanillaAgent
+  memory_size: 100
+  need_goal: True
+
+llm:
+  gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
+      name: gpt_azure
+      engine: gpt-35-turbo
+      context_length: 4096
+      use_azure: True
+      temperature: 0.
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  llama-70b:
+      name: gpt
+      engine: Meta-Llama-3.1-70B-Instruct
+      context_length: 4096
+      use_azure: False
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+  llama-405b:
+      name: gpt
+      engine: Meta-Llama-3.1-405B-Instruct
+      context_length: 4096
+      use_azure: False
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+
+  llama-70b-vllm:
+      name: openai_vllm
+      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct/
+      context_length: 4096
+      use_azure: False
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+
+env:
+  alfworld:
+    name: alfworld
+    base_config: ${PROJECT_PATH}/agentboard/environment/alfworld/base_config.yaml
+    split: eval_out_of_distribution
+    batch_size: 1
+    label_path: ${PROJECT_PATH}/data/alfworld/test.jsonl
+    check_inventory: True
+    check_actions: check valid actions
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/Agent/alfworld_act.json
+  

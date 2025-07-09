@@ -1,0 +1,5 @@
+{
+    "examples": ["input = [0, -4, 3, 6, -2, -3] \nAnwer:[1, 2, 2, 1, 2, 2]"],
+    "system_msg": "You are a helpful assistant.",
+    "instruction": "Given a sequence of integers, find a subsequence with the highest sum, such that no two numbers in the subsequence are adjacent in the original sequence.\n\nOutput a list with \"1\" for chosen numbers and \"2\" for unchosen ones. If multiple solutions exist, select the lexicographically smallest. "
+}

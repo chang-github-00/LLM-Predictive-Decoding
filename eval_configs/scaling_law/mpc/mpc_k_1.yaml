@@ -1,0 +1,63 @@
+run:
+  log_path: ${PROJECT_PATH}/results/debug_gsm8k
+  data_path: /root/huggingface/gsm8k
+# only provide example run_config here, please specify with arguments when running
+# --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
+
+
+algorithm:
+  task: gsm8k
+  name: MPC_Sample_Reward
+  lookahead_thought_length: 6
+  reward_threshold: 0.0
+  n_generate_sample: 1
+  beam_size: 1
+  value_type: reward # use math shepherd
+  do_sample: True
+  beam_temperature: 1.0
+  select_temperature: 0.01
+  use_memory: True
+  
+  # lookahead_token_length: 
+llm:
+  gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
+      name: gpt_azure
+      engine: gpt-35-turbo
+      context_length: 4096
+      use_azure: True
+      temperature: 0 # make this larger for tot
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: #"\n"
+      use_parser: False
+      max_tokens: 500
+  llama-3:
+      name: vllm
+      engine: /ssddata/model_hub/Meta-Llama-3-8B-Instruct/   #/root/huggingface/Meta-Llama-3-8B-Instruct/
+      context_length: 8192
+      temperature: 0
+      top_p: 1
+      stop:
+      dtype: float32
+      ngpu: 1
+  math-shepherd:
+      name: openai_vllm
+      engine: /ssddata/model_hub/math-shepherd-mistral-7b-prm/
+      context_length: 4096
+      temperature: 0
+      top_p: 1
+      stop:
+      dtype: float32
+      ngpu: 1
+  # llama3:
+  #     name: openai_vllm
+  #     engine: /root/huggingface/Meta-Llama-3-8B-Instruct/
+  #     context_length: 4096
+  #     temperature: 0 # make this larger for tot
+  #     top_p: 1
+  #     retry_delays: 20
+  #     max_retry_iters: 15
+  #     stop: #"\n"
+  #     use_parser: False
+  #     max_tokens: 500

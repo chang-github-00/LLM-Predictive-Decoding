@@ -1,0 +1,5 @@
+{
+    "examples": ["The graph has edges [(88, 95), (88, 82), (88, 23), (77, 37), (77, 98), (0, 93), (0, 92), (74, 95), (74, 82), (95, 84), (95, 66), (61, 46), (35, 50), (93, 82), (93, 84), (93, 42), (97, 84), (97, 37), (46, 98), (98, 66)] You need to find the path from 61 to 92. \nAnwer:[61, 46, 98, 77, 37, 97, 84, 95, 88, 82, 93, 92]"],
+    "system_msg": "You are a helpful assistant.",
+    "instruction": "Given a graph where each node is represented by an integer. Undirected edge between nodes i and j is represented by a tuple (i, j). Given all the edges {edges}, generate a path from node {start} to {end}. Represent the path with a list of integers [{start}, ..., {end}]."
+}

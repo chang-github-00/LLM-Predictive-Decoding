@@ -1,0 +1,57 @@
+run:
+  max_num_steps: 30
+  wandb: False
+  project_name: eval-test
+  baseline_dir: data/baseline_results
+  log_path: ${PROJECT_PATH}/results/debug_deepseek_alfworld
+# only provide example run_config here, please specify with arguments when running
+# --wandb --max_num_steps 30 --project_name ... --baseline_dir ... --log_path ...
+
+agent:
+  name: MPCSample
+  memory_size: 200
+  need_goal: True
+  n_gram: 30
+  similarity_threshold_low: 0.5
+  similarity_threshold_high: 0.7
+  reward_threshold: 0 # llm - 0.2 # heuristic - 0.6
+  do_sample: True
+  max_world_model_len: 500
+  beam_temperature: 0.8
+  select_temperature: 0.05 #.05 # llm 0.3 # heuristic - 0.05, smaller difference than llm
+  n_generate_sample: 8
+  value_type: pddl
+  lookahead_length: 6
+
+llm:
+  gpt-35-turbo: # using gpt_azure llm would need azure versin of openai key
+      name: gpt_azure
+      engine: gpt-35-turbo
+      context_length: 4096
+      use_azure: True
+      temperature: 0.1
+      top_p: 0.9
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: 
+      use_parser: False
+      max_tokens: 200
+  llama-70b-vllm:
+      name: openai_vllm
+      engine: /ssddata/model_hub/Meta-Llama-3.1-70B-Instruct/
+      context_length: 4096
+      use_azure: False
+      temperature: 0.0
+      top_p: 1
+      retry_delays: 20
+      max_retry_iters: 15
+      stop: "\n"
+      use_parser: False
+env:
+  pddl:
+    name: pddl
+    game_name: [gripper, blockworld, barman, tyreworld]
+    env_num_per_task: 20
+    check_actions: "check valid actions"
+    init_prompt_path: ${PROJECT_PATH}/agentboard/prompts/VanillaAgent/pddl_concise_prompt.json
+    label_path: ${PROJECT_PATH}/data/pddl/test.jsonl

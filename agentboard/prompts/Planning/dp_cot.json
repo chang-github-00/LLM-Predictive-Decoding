@@ -1,0 +1,5 @@
+{
+    "examples": ["input = [0, -4, 3, 6, -2, -3] current processed result is [None, None, None, None, None, None]\nAction: choose 0, discard -4\n Observation: previous chosen 0, sum is 0, current processed result is [1, 2, None, None, None, None]\nReward: 0\nIs done: False\n Action: choose 6, discard 3, -2\n Observation: previously chosen 0, 6, sum is 6, current processed result is [1, 2, 2, 1, 2, None]\n Action: discard -3 \n Observation: previously chosen 0, 6, sum is 6, current processed result is [1, 2, 2, 1, 2, 2]. All numbers in input has been processed, the task is finished.\n Reward: 6\nIs done:True\nAnswer:[1, 2, 2, 1, 2, 2]"],
+    "system_msg": "You are a helpful assistant.",
+    "instruction": "Given a sequence of integers, find a subsequence with the highest sum, such that no two numbers in the subsequence are adjacent in the original sequence.\n\nOutput a list with \"1\" for chosen numbers and \"2\" for unchosen ones. If multiple solutions exist, select the lexicographically smallest. "
+}
