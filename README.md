@@ -1,4 +1,4 @@
-# Decoding Strategy for Agents
+# NON-MYOPIC GENERATION OF LANGUAGE MODELS FOR REASONING AND PLANNING (ICLR 2025)
 
 
 ## Download dataset
