@@ -12,11 +12,11 @@ As shown in the figure below, there are two solutions fixing this. The first is 
 <div style="display: flex; justify-content: center; gap: 20px;">
 
   <figure>
-    <img src="assets/blog_figure_avoid_mistake.jpg" alt="Figure 1" width="500">
+    <img src="assets/blog_figure_avoid_mistake.jpg" alt="Figure 1" width="400">
   </figure>
 
   <figure>
-    <img src="assets/blog_figure_correct_mistake.jpg" alt="Figure 2" width="500">
+    <img src="assets/blog_figure_correct_mistake.jpg" alt="Figure 2" width="400">
   </figure>
 
 </div>
